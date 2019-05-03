@@ -1,13 +1,31 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { StoreModule, Store } from '@ngrx/store';
+import { itemReducer } from './store/item.reducer';
+import { ActionTypes, Item } from './store/item.actions'
+
 
 describe('AppComponent', () => {
+  let store: Store<Item[]>
+  let signForm: FormGroup
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        StoreModule.forRoot({ items: itemReducer })
+      ],
+
     }).compileComponents();
+    store = TestBed.get(Store);
+    spyOn(store, 'dispatch').and.callThrough();
+
   }));
 
   it('should create the app', () => {

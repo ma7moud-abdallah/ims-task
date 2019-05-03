@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/ims",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

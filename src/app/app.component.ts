@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActionTypes, Item } from './store/item.actions'
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'ims';
+  body: Item
   signForm: FormGroup
   mTitle = ''
   modal = true
@@ -44,9 +46,14 @@ export class AppComponent {
 
 
 
-  async Add(title) {
-    this.mTitle = title
-    this.store.dispatch({ type: title, body: this.signForm.value })
+  async exec(title: ActionTypes) {
+    try {
+      this.body = this.signForm.value
+      this.mTitle = title
+      this.store.dispatch({ type: title, body: this.body })
+    } catch (error) {
+      console.log(error)
+    }
 
   }
 }
