@@ -3,11 +3,11 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm('Add Item')"
+  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm(types.Add)"
     class="btn btn-primary m-2">Add Item</button>
-  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm('Buy Item')"
+  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm(types.Remove)"
     class="btn btn-primary m-2">Buy Item </button>
-  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm('Add Item')"
+  <button type="button" data-toggle="modal" data-target="#exampleModal" (click)="createForm(types.Add)"
     class="btn btn-primary m-2">Return Item </button>
 
   <div style="text-align:center" class="row card dark-bg p-3  m-2">
@@ -25,6 +25,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"

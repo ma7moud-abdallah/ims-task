@@ -12,12 +12,15 @@ import { ActionTypes, Item } from './store/item.actions'
 export class AppComponent {
   title = 'ims';
   body: Item
+  types
   signForm: FormGroup
   mTitle = ''
   modal = true
   items$: Observable<[]>;
   constructor(private store: Store<[]>, public fb: FormBuilder) {
     this.createForm()
+    this.types = ActionTypes
+    console.log({ types: this.types })
     this.items$ = store.pipe(select('items'));
 
   }
@@ -47,7 +50,7 @@ export class AppComponent {
 
 
 
-  exec(title: ActionTypes) {
+  exec(title) {
     try {
       this.body = this.signForm.value
       this.mTitle = title
