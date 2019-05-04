@@ -16,7 +16,7 @@ export class AppComponent {
   mTitle = ''
   modal = true
   items$: Observable<[]>;
-  constructor(private store: Store<[]>, private fb: FormBuilder) {
+  constructor(private store: Store<[]>, public fb: FormBuilder) {
     this.createForm()
     this.items$ = store.pipe(select('items'));
 
@@ -42,11 +42,12 @@ export class AppComponent {
         Validators.min(1)
       ])]
     })
+    return this.signForm
   }
 
 
 
-  async exec(title: ActionTypes) {
+  exec(title: ActionTypes) {
     try {
       this.body = this.signForm.value
       this.mTitle = title
